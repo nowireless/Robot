@@ -1,0 +1,3 @@
+[submodule "freenect_stack"]
+	path = freenect_stack
+	url = https://github.com/ros-drivers/freenect_stack.git
