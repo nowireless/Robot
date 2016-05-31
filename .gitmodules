@@ -7,3 +7,6 @@
 [submodule "ros_nav6"]
 	path = ros_nav6
 	url = https://github.com/nowireless/ros_nav6.git
+[submodule "depthimage_to_laserscan"]
+	path = depthimage_to_laserscan
+	url = https://github.com/ros-perception/depthimage_to_laserscan.git
