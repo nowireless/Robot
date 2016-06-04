@@ -79,13 +79,13 @@ int main(int argc, char **argv) {
 
 	//Initialize Networktables
 	string ip;
-	n.param<string>("crio_ip",ip,"127.0.0.1");
+	n.param<string>("crio_ip", ip ,"127.0.0.1");
 	ROS_INFO("NT server IP %s", ip.c_str());
 	ROS_INFO("Starting NT");
 	nt::AddConnectionListener(connection_callback,true);
 	nt::SetLogger(nt_log_callback, NT_LOG_INFO);
 	NetworkTable::SetClientMode();
-	NetworkTable::SetIPAddress(ip);
+	NetworkTable::SetIPAddress(llvm::StringRef(ip));
 
 	//Get bridge table
 	shared_ptr<NetworkTable> bridge = NetworkTable::GetTable("bridge");
