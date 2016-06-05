@@ -8,7 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
-	lib_crio
+  lib_crio
 )
 
 ## System dependencies are found with CMake's conventions
@@ -47,7 +47,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate messages in the 'msg' folder
  add_message_files(
    FILES
-   DriverStation.msg
+   DriverStationState.msg
 #   Message1.msg
 #   Message2.msg
  )
