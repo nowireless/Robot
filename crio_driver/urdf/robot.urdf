@@ -1,4 +1,4 @@
-<robot name="test_robot">
+<robot name="robot">
 
 	<link name="base_link">
 		<visual>
@@ -10,6 +10,13 @@
 				<color rgba="1 1 1 1"/>
 			</material>
 		</visual>
+		<collision>
+			<!-- origin is relative -->
+			<origin xyz="0 0 0"/>
+			<geometry>
+				<box size="0.16 0.16 0.12"/>
+			</geometry>
+		</collision>
 	</link>
 	
 	<link name="lwheel">
@@ -22,6 +29,12 @@
 				<color rgba="0 0 0 1"/>
 			</material>
 		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.046" length="0.008"/>
+			</geometry>
+		</collision>
 	</link>
 	
 	<joint name="base_to_lwheel" type="fixed">
@@ -30,6 +43,13 @@
 		<origin xyz="0 0.115 0.046" rpy="1.5708 0 0"/>
 	</joint>
 	
+  <transmission name="lwheel_trans" type="SimpleTransmission">
+    <actuator name="lwheel_motor"/>
+    <joint name="base_to_lwheel"/>
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+  </transmission>
+  
 	<link name="rwheel">
 		<visual>
 			<geometry>
@@ -40,6 +60,12 @@
 				<color rgba="0 0 0 1"/>
 			</material>
 		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.046" length="0.008"/>
+			</geometry>
+		</collision>
 	</link>
 	
 	<joint name="base_to_rwheel" type="fixed">
@@ -47,6 +73,13 @@
 		<child link="rwheel"/>
 		<origin xyz="0 -0.115 0.046" rpy="-1.5708 0 0"/>
 	</joint>
+	
+  <transmission name="rwheel_trans" type="SimpleTransmission">
+    <actuator name="rwheel_motor" />
+    <joint name="base_to_rwheel" />
+    <mechanicalReduction>1</mechanicalReduction>
+    <motorTorqueConstant>1</motorTorqueConstant>
+  </transmission>	
 	
 	<link name="fwheel_attach">
 		<visual>
@@ -83,6 +116,4 @@
 		<child link="fwheel"/>
 		<origin xyz="0.13 0 0.02" rpy="0 0 0"/>
 	</joint>
-	
-
 </robot>

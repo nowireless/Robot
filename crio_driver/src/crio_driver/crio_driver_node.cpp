@@ -25,10 +25,10 @@ private:
 };
 
 CRIO::CRIO() {
-	hardware_interface::JointStateHandle stateHandleLeft("left_wheel", &m_pos[0], &m_vel[0], &m_eff[0]);
+	hardware_interface::JointStateHandle stateHandleLeft("base_to_lwheel", &m_pos[0], &m_vel[0], &m_eff[0]);
 	m_jointStateInterface.registerHandle(stateHandleLeft);
 	
-	hardware_interface::JointStateHandle stateHandleRight("right_wheel", &m_pos[1], &m_vel[1], &m_eff[1]);
+	hardware_interface::JointStateHandle stateHandleRight("base_to_rwheel", &m_pos[1], &m_vel[1], &m_eff[1]);
 	m_jointStateInterface.registerHandle(stateHandleRight);
 	
 	this->registerInterface(&m_jointStateInterface);
@@ -53,8 +53,12 @@ ros::Duration CRIO::GetPeriod() const {
 	return ros::Duration(0.01);
 }
 
-void CRIO::Write() {}
-void CRIO::Read() {}
+void CRIO::Write() {
+	//ROS_INFO("Writing");
+}
+void CRIO::Read() {
+	//ROS_INFO("Reading");
+}
 
 int main(int argc, char **argv) {
 	ros::init(argc, argv, "crio_driver");
@@ -73,6 +77,7 @@ int main(int argc, char **argv) {
 		cm.update(robot.GetTime(), robot.GetPeriod());
 		rate.sleep();
 	}
+	ROS_INFO("Stopped");
 	spinner.stop();
 	
 	return 0;
