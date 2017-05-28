@@ -1,9 +1,6 @@
 [submodule "freenect_stack"]
 	path = freenect_stack
 	url = https://github.com/ros-drivers/freenect_stack.git
-[submodule "lib_crio"]
-	path = lib_crio
-	url = https://github.com/nowireless/lib_crio.git
 [submodule "ros_nav6"]
 	path = ros_nav6
 	url = https://github.com/nowireless/ros_nav6.git
